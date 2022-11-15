@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="480" height="640" viewBox="0 0 480 640">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_98" data-name="Rectangle 98" width="480" height="640" rx="8" fill="#fff"/>
+    </clipPath>
+  </defs>
+  <g id="live_rect_portrait" clip-path="url(#clip-path)">
+    <path id="Path_239" data-name="Path 239" d="M480,0H0V640H480ZM240.5,84A125.5,125.5,0,0,0,115,209.5v76a125.5,125.5,0,0,0,251,0v-76A125.5,125.5,0,0,0,240.5,84Z" fill="rgba(10,10,10,0.6)" fill-rule="evenodd"/>
+    <path id="Path_240" data-name="Path 240" d="M237,83l-7.148.787a127,127,0,0,0-112.68,115.938L113,251" fill="none" stroke="#25b18e" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <path id="Path_241" data-name="Path 241" d="M241,409l3.868-.291A127,127,0,0,0,362.1,289.627L365,241" fill="none" stroke="#25b18e" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+  </g>
+</svg>

@@ -1,0 +1,211 @@
+﻿<html>
+
+<head>
+  <meta charset='utf-8' />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>FaceHeart Vitals™</title>
+
+  <!-- <link href="css/my.css" rel="stylesheet" /> -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/pixsee_style.css?20221114" rel="stylesheet" />
+  <link href="css/process_bar.css" rel="stylesheet">
+
+  <style>
+    .a-ellipsis {
+      text-overflow: ellipsis;
+      padding-right: 0px;
+      padding-left: 0px;
+      width: 200px;
+      max-width: 200px;
+      display: block;
+      overflow: hidden;
+      white-space: nowrap
+    }
+
+    .auto_table {
+      width: 100%;
+      margin-bottom: 0px
+    }
+
+    @media only screen and (min-width: 768px) {
+
+      /* For desktop: */
+      .auto_table {
+        width: 210px;
+        margin-bottom: 0px
+      }
+
+      .a-ellipsis {
+        text-overflow: ellipsis;
+        padding-right: 0px;
+        padding-left: 0px;
+        width: 200px;
+        max-width: 200px;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap
+      }
+    }
+  </style>
+
+  <script src="js/thirdparty/jquery/jquery-3.5.0.js"></script>
+  <script src="js/vital_result_printer.js"></script>
+  <script src="js/camera.js"></script>
+  <script src="js/fhvitals_sdk.js"></script>
+</head>
+
+<body>
+
+  <div class="header" >
+    <!-- <div class="menu-icon" onclick="myFunction(this)">
+      <div class= "bar1"></div>
+      <div class= "bar2"></div>
+    </div> -->
+    <img class="bi m-auto d-block header-image" src="images/logo.png" alt="" />
+  </div>
+
+  <div class="container">
+    <div class="row justify-content-center mx-1 mb-3">
+      <div class="col-auto d-flex justify-content-center" style="position:relative">
+        <canvas id='live_canvas'></canvas>
+
+
+        <div style="position: absolute;bottom: 15px;right: 15px" id="progress_scan">
+          <div class="progress green" style="width: 80px; height: 80px">
+            <span class="progress-left">
+              <span id="progress_left" className="progress-bar"></span>
+            </span>
+            <span class="progress-right">
+              <span id="progress_right" className="progress-bar"></span>
+            </span>
+            <div class="progress-value" id="progress_value">0%</div>
+          </div>
+        </div>
+
+        <div class="text-white text-center text-break font-weight-bold"
+          style="position: absolute;bottom: 15px;width: 80%;font-size: small" id="scan_p_hint">
+          <p id="scan_p_hint_text">Please place your face within the oval outline <br> and hold still during
+            the measuring process.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="row cols-lg-6 gx-3 gy-3 mb-3">
+      <div class="col-6 col-md-4 col-xxl-2 p-1">
+        <div class="info-card">
+          <div class="row card-content">
+            <div class="col-3 m-auto p-0">
+              <p class="text-start m-auto mx-4 card-title" >Heart <br>Rate</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+            </div>
+            <div class="col-3 px-0 m-auto">
+              <p id="ㄇv_hr" class="text-center fs-1 m-0 card-value">100</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+              <img class="bi m-auto d-block" src="images/hr.svg" width="24" height="24" />
+              <p class="text-center m-auto" style="font-size: xx-small">bpm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xxl-2 p-1">
+        <div class="info-card">
+          <div class="row card-content">
+            <div class="col-3 m-auto p-0">
+              <p class="text-start m-auto mx-4 card-title" >HR <br>Variability</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+            </div>
+            <div class="col-3 px-0 m-auto">
+              <p id="v_hrv" class="text-center fs-1 m-0 card-value">108</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+              <img class="bi m-auto d-block" src="images/hrv.svg" width="24" height="24" />
+              <p class="text-center m-auto" style="font-size: xx-small">ms</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xxl-2 p-1">
+        <div class="info-card">
+          <div class="row card-content">
+            <div class="col-3 m-auto p-0">
+              <p class="text-start m-auto mx-4 card-title" >Blood<br>Pressure</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+            </div>
+            <div class="col-3 px-0 m-auto">
+              <p id="v_sbp" class="text-center fs-1 m-0 card-value">120</p>
+              <p id="v_dbp" class="text-center fs-3 card-value2" >80</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+              <img class="bi m-auto d-block" src="images/bp.svg" width="24" height="24" />
+              <p class="text-center m-auto" style="font-size: xx-small">mmHg</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xxl-2 p-1">
+        <div class="info-card">
+          <div class="row card-content">
+            <div class="col-3 m-auto p-0">
+              <p class="text-start m-auto mx-4 card-title" >Oxygen<br>Saturation</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+            </div>
+            <div class="col-3 px-0 m-auto">
+              <p id="v_spo2" class="text-center fs-1 m-0 card-value">845</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+              <img class="bi m-auto d-block" src="images/spo2.svg" width="24" height="24" />
+              <p class="text-center m-auto" style="font-size: xx-small">SpO₂%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xxl-2 p-1">
+        <div class="info-card">
+          <div class="row card-content">
+            <div class="col-3 m-auto p-0">
+              <p class="text-start m-auto mx-4 card-title" >Respiration<br>Rate</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+            </div>
+            <div class="col-3 px-0 m-auto">
+              <p id="v_rr" class="text-center fs-1 m-0 card-value">24</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+              <img class="bi m-auto d-block" src="images/rr.svg" width="24" height="24" />
+              <p class="text-center m-auto" style="font-size: xx-small">bpm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xxl-2 p-1">
+        <div class="info-card">
+          <div class="row card-content">
+            <div class="col-3 m-auto p-0">
+              <p class="text-start m-auto mx-4 card-title" >Stress<br>Index</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+            </div>
+            <div class="col-3 px-0 m-auto">
+              <p id="v_si" class="text-center fs-1 m-0 card-value">24</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+              <img class="bi m-auto d-block" src="images/si.svg" width="24" height="24" />
+              <p class="text-center m-auto" style="font-size: xx-small"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+    <script src="js/scan.js?20221115"></script>
+</body>
+
+</html>

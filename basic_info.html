@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>FaceHeart Vitals™</title>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="css/my.css" rel="stylesheet" /> -->
+  <link href="css/pixsee_style.css?20221114" rel="stylesheet" />
+  <script src="js/thirdparty/jquery/jquery-3.5.0.js"></script>
+</head>
+
+<body>
+
+  <div class="header" >
+    <!-- <div class="menu-icon" onclick="myFunction(this)">
+      <div class= "bar1"></div>
+      <div class= "bar2"></div>
+    </div> -->
+    <img class="bi m-auto d-block header-image" src="images/logo.png" alt="" />
+  </div>
+
+  <div class="container ">
+    <div class="row justify-content-center mx-1">
+      <div class="col-xxl-8  my-0 py-0">
+        <div class="content-head">
+          <h1 class="display-6 fw-normal">Basic Information</h1>
+        </div>
+
+        <div class="col-md-12 d-grid ml-2 rounded px-4 py-0">
+
+          <div class="row mb-2">
+            <div class="col-md-4 py-0">
+              <h2 class="text-muted"><strong>Sex</strong></h2>
+            </div>
+            <div class="col-md-8 py-0 mt-2">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="eid_male" checked>
+                <label class="form-check-label" for="eid_male">
+                  <div>Male</div>
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="eid_female">
+                <label class="form-check-label" for="eid_female">
+                  <div>Female</div>
+                </label>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-md-2 col-4  pt-0">
+              <h2 class="text-muted"><strong>Height</strong></h1>
+            </div>
+            <div class="col-md-8 col-8 pt-0">
+              <div class="input-group input-group-lg">
+                <input id="eid_height" type="text" class="form-control" value="170"
+                  aria-label="Dollar amount (with dot and two decimal places)">
+                <span class="input-group-text">Cm.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-md-2 col-4  pt-0">
+              <h2 class="text-muted"><strong>Weight</strong></h1>
+            </div>
+            <div class="col-md-8 col-8 pt-0">
+              <div class="input-group input-group-lg">
+                <input id="eid_weight" type="text" class="form-control" value="60"
+                  aria-label="Dollar amount (with dot and two decimal places)">
+                <span class="input-group-text">Kg.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-md-2 col-4 pt-0">
+              <h2 class="text-muted"><strong>Birth year</strong></h1>
+            </div>
+            <div class="col-md-8 col-8 pt-0">
+              <div class="input-group input-group-lg">
+                <input id="eid_birth" type="text" class="form-control" value="1999"
+                  aria-label="Dollar amount (with dot and two decimal places)">
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-md-4 py-0">
+              <h2 class="text-muted"><strong>Do you have Hypertension?</strong></h1>
+            </div>
+
+            <div class="col-md-8 py-0 mt-2 mb-3">
+              <div class="form-check ">
+                <input class="form-check-input" type="checkbox" value="" id="eid_hy_no" checked>
+                <label class="form-check-label" for="eid_hy_no">
+                  <div>No.</div>
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="eid_hy_yes">
+                <label class="form-check-label" for="eid_hy_yes">
+                  <div>Yes</div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-5">
+            <div class="col-md-7 py-0"></div>
+            <div class="col-md-3 d-grid py-0 mt-4">
+              <button type="button" class="btn btn-secondary btn-lg eid_btn" id="eid_btn_next">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/basic_info.js"></script>
+</body>
+
+</html>

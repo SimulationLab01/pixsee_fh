@@ -1,0 +1,294 @@
+﻿<html>
+
+<head>
+  <meta charset='utf-8' />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FaceHeart Vitals™</title>
+  
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- <link href="css/my.css" rel="stylesheet" /> -->
+  <link href="css/pixsee_style.css?20221114" rel="stylesheet" />
+  <link href="css/process_bar.css" rel="stylesheet">
+
+
+  <style>
+    .a-ellipsis {
+      text-overflow: ellipsis;
+      padding-right: 0px;
+      padding-left: 0px;
+      width: 200px;
+      max-width: 200px;
+      display: block;
+      overflow: hidden;
+      white-space: nowrap
+    }
+
+    .auto_table {
+      width: 100%;
+      margin-bottom: 0px
+    }
+
+    @media only screen and (min-width: 768px) {
+
+      /* For desktop: */
+      .auto_table {
+        width: 210px;
+        margin-bottom: 0px
+      }
+
+      .a-ellipsis {
+        text-overflow: ellipsis;
+        padding-right: 0px;
+        padding-left: 0px;
+        width: 200px;
+        max-width: 200px;
+        display: block;
+        overflow: hidden;
+        white-space: nowrap
+      }
+    }
+  </style>
+  <script src="js/thirdparty/jquery/jquery-3.5.0.js"></script>
+  <script src="js/thirdparty/charts/dist/chart.js"></script>
+  <script src="js/vital_result_printer.js"></script>
+  <script src="js/spower_chart.js"></script>
+</head>
+
+<body>
+ <div class="header" >
+    <!-- <div class="menu-icon" onclick="myFunction(this)">
+      <div class= "bar1"></div>
+      <div class= "bar2"></div>
+    </div> -->
+    <img class="bi m-auto d-block header-image" src="images/logo.png" alt="" />
+  </div>
+
+  <div class="container">
+
+    <div class="row cols-lg-6 gy-3 mb-3">
+      <div class="col-6 col-md-4 col-xxl-2 p-1">
+        <div class="info-card">
+          <div class="row card-content">
+            <div class="col-3 m-auto p-0">
+              <p class="text-start m-auto mx-4 card-title" >Heart <br>Rate</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+            </div>
+            <div class="col-3 px-0 m-auto">
+              <p id="f_v_hr" class="text-center fs-1 m-0 card-value">100</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+              <img class="bi m-auto d-block" src="images/hr.svg" width="24" height="24" />
+              <p class="text-center m-auto" style="font-size: xx-small">bpm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xxl-2 p-1">
+        <div class="info-card">
+          <div class="row card-content">
+            <div class="col-3 m-auto p-0">
+              <p class="text-start m-auto mx-4 card-title" >HR <br>Variability</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+            </div>
+            <div class="col-3 px-0 m-auto">
+              <p id="f_v_hrv" class="text-center fs-1 m-0 card-value">108</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+              <img class="bi m-auto d-block" src="images/hrv.svg" width="24" height="24" />
+              <p class="text-center m-auto" style="font-size: xx-small">ms</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xxl-2 p-1">
+        <div class="info-card">
+          <div class="row card-content">
+            <div class="col-3 m-auto p-0">
+              <p class="text-start m-auto mx-4 card-title" >Blood<br>Pressure</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+            </div>
+            <div class="col-3 px-0 m-auto">
+              <p id="f_v_sbp" class="text-center fs-1 m-0 card-value">120</p>
+              <p id="f_v_dbp" class="text-center fs-3 card-value2" >80</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+              <img class="bi m-auto d-block" src="images/bp.svg" width="24" height="24" />
+              <p class="text-center m-auto" style="font-size: xx-small">mmHg</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xxl-2 p-1">
+        <div class="info-card">
+          <div class="row card-content">
+            <div class="col-3 m-auto p-0">
+              <p class="text-start m-auto mx-4 card-title" >Oxygen<br>Saturation</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+            </div>
+            <div class="col-3 px-0 m-auto">
+              <p id="f_v_spo2" class="text-center fs-1 m-0 card-value">845</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+              <img class="bi m-auto d-block" src="images/spo2.svg" width="24" height="24" />
+              <p class="text-center m-auto" style="font-size: xx-small">SpO₂%</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xxl-2 p-1">
+        <div class="info-card">
+          <div class="row card-content">
+            <div class="col-3 m-auto p-0">
+              <p class="text-start m-auto mx-4 card-title" >Respiration<br>Rate</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+            </div>
+            <div class="col-3 px-0 m-auto">
+              <p id="f_v_rr" class="text-center fs-1 m-0 card-value">24</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+              <img class="bi m-auto d-block" src="images/rr.svg" width="24" height="24" />
+              <p class="text-center m-auto" style="font-size: xx-small">bpm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-xxl-2 p-1">
+        <div class="info-card">
+          <div class="row card-content">
+            <div class="col-3 m-auto p-0">
+              <p class="text-start m-auto mx-4 card-title" >Stress<br>Index</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+            </div>
+            <div class="col-3 px-0 m-auto">
+              <p id="f_v_si" class="text-center fs-1 m-0 card-value">24</p>
+            </div>
+            <div class="col-3 m-auto p-0">
+              <img class="bi m-auto d-block" src="images/si.svg" width="24" height="24" />
+              <p class="text-center m-auto" style="font-size: xx-small"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-lg-6 col-xxl-6 ">
+        <div class="row">
+          <div class="col-6 col-md-4 py-0">
+            <div
+              class="p-4 row g-0 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative watch-card">
+              <div class="col-md-12">
+                <div class="row watch-card-title">
+                  <strong class=" text-black text-center">Activity</strong>
+                </div>
+                <div class="row">
+                  <img id="f_v_activity" class="bi m-auto d-block" src="images/icon_sp_1.svg" width="90%"
+                    height="90%" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 py-0">
+            <div
+              class="p-4 row g-0 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative watch-card">
+              <div class="col-md-12">
+                <div class="row watch-card-title">
+                  <strong class=" text-black text-center">Sleep</strong>
+                </div>
+                <div class="row">
+                  <img id="f_v_sleep" class="bi m-auto d-block" src="images/icon_sp_2.svg" width="90%" height="90%" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 py-0">
+            <div
+              class="p-4 row g-0 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative watch-card">
+              <div class="col-md-12">
+                <div class="row watch-card-title">
+                  <strong class=" text-black text-center">Equilibrium</strong>
+                </div>
+                <div class="row">
+                  <img id="f_v_equilibrium" class="bi m-auto d-block" src="images/icon_sp_3.svg" width="90%"
+                    height="90%" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 py-0">
+            <div
+              class="p-4 row g-0 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative watch-card">
+              <div class="col-md-12">
+                <div class="row watch-card-title">
+                  <strong class=" text-black text-center">Metabolism</strong>
+                </div>
+                <div class="row">
+                  <img id="f_v_metabolism" class="bi m-auto d-block" src="images/icon_sp_4.svg" width="90%"
+                    height="90%" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 py-0">
+            <div
+              class="p-4 row g-0 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative watch-card">
+              <div class="col-md-12">
+                <div class="row watch-card-title">
+                  <strong class=" text-black text-center">Health</strong>
+                </div>
+                <div class="row">
+                  <img id="f_v_health" class="bi m-auto d-block" src="images/icon_sp_5.svg" width="90%" height="90%" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 py-0">
+            <div
+              class="p-4 row g-0 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative watch-card">
+              <div class="col-md-12">
+                <div class="row watch-card-title">
+                  <strong class=" text-black text-center">Relaxation</strong>
+                </div>
+                <div class="row">
+                  <img id="f_v_relaxation" class="bi m-auto d-block" src="images/icon_sp_5.svg" width="90%"
+                    height="90%" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6 col-xxl-4 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="row property-card">
+          <div class = "col">
+            <canvas id="f_spower_canvas" width="100%" height="100%"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-md-center mb-5">
+      <div class="col-md-2 text-center">
+        <button type="button" class="btn btn-secondary btn-lg eid_btn" id="f_eid_btn_home">Home</button>
+      </div>
+    </div>
+
+  </div>
+  <script src="js/finish.js?20221115"></script>
+</body>
+
+</html>

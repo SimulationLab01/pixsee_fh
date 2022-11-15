@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24.368" height="24" viewBox="0 0 24.368 24">
+  <g id="spo2" transform="translate(0.368)">
+    <rect id="Rectangle_36" data-name="Rectangle 36" width="24" height="24" fill="#82dcd2" opacity="0"/>
+    <path id="Path_85" data-name="Path 85" d="M18.069,15.008a7.4,7.4,0,0,1-7.535,7.267A7.4,7.4,0,0,1,3,15.008a7.4,7.4,0,0,1,7.535-7.267A7.4,7.4,0,0,1,18.069,15.008Z" transform="translate(-2.368 -2.275)" fill="none" stroke="#2e6e69" stroke-width="2"/>
+    <ellipse id="Ellipse_9" data-name="Ellipse 9" cx="2.792" cy="2.807" rx="2.792" ry="2.807" transform="translate(17.784 4)" fill="#2b6a64"/>
+    <ellipse id="Ellipse_10" data-name="Ellipse 10" cx="1.241" cy="1.248" rx="1.241" ry="1.248" transform="translate(18.404 12.733)" fill="#2b6a64"/>
+    <path id="Path_86" data-name="Path 86" d="M26.288,7.016a2.081,2.081,0,0,0-1.745,1.408" transform="translate(-5.401 -1.617)" fill="#7eddd3" stroke="#7eddd3" stroke-linecap="round" stroke-width="1"/>
+    <path id="Path_87" data-name="Path 87" d="M10.58,11.226A3.974,3.974,0,0,0,7,13.776" transform="translate(-3 -2.825)" fill="none" stroke="#2e6e69" stroke-linecap="round" stroke-width="2"/>
+    <ellipse id="Ellipse_11" data-name="Ellipse 11" cx="0.62" cy="0.624" rx="0.62" ry="0.624" transform="translate(2.892 12.109)" fill="#2e6e69"/>
+  </g>
+</svg>
